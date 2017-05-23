@@ -1,0 +1,47 @@
+<div class="container">
+	<div [hidden]="submit">
+		ID:<input type="text" [(ngModel)]="id" required>
+		<br>
+		level:<input type="number" min="1" max="20" [(ngModel)]="level" required>
+		<div>
+			<div *ngIf="level>=1">
+				<h3>level1:</h3>
+				<select class="form-control" required [(ngModel)]="selectedSkillLv1">
+					<option value="" selected disabled>select one</option>
+					<option *ngFor="#skillLv1 of skillsLv1">{{skillLv1.name}}</option>
+				</select>
+			</div>
+			<div *ngIf="level>=2">
+				<h3>level2:</h3>
+				<select class="form-control" required [(ngModel)]="selectedSkillLv2">
+					<option value="" selected disabled>select one</option>
+					<option *ngFor="#skillLv2 of skillsLv2">{{skillLv2.name}}</option>
+				</select>	
+			</div>
+			<div *ngIf="level>=5">
+				<h3>level5:</h3>
+				<select class="form-control" required [(ngModel)]="selectedSkillLv5">
+					<option value="" selected disabled>select one</option>
+					<option *ngFor="#skillLv5 of skillsLv5">{{skillLv5.name}}</option>
+				</select>	
+			</div>
+			<div *ngIf="level>=8">
+				<h3>level8:</h3>
+				<select class="form-control" required [(ngModel)]="selectedSkillLv8">
+					<option value="" selected disabled>select one</option>
+					<option *ngFor="#skillLv8 of skillsLv8">{{skillLv8.name}}</option>
+				</select>	
+			</div>
+		</div>
+		<button type="submit" (click)="onAnalyze()">analyze</button>
+	</div>
+	<div [hidden]="!submit">
+		ID:{{id}}
+		level:{{level}}
+		<h3 *ngIf="level>=1">level1: {{selectedSkillLv1}}</h3>
+		<h3 *ngIf="level>=2">level2: {{selectedSkillLv2}}</h3>
+		<h3 *ngIf="level>=5">level5: {{selectedSkillLv5}}</h3>
+		<h3 *ngIf="level>=8">level8: {{selectedSkillLv8}}</h3>
+		<button type="submit" (click)="onBack()">back</button>
+	</div>
+</div>
